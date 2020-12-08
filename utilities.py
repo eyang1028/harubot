@@ -3,6 +3,9 @@ import os
 
 p = './pics/'
 
+def getToken():
+    return os.getenv('DISCORD_BOT_TOKEN')
+
 def isImage(attachment):
     url = attachment.url;
     isPng = url[-len('png'):] == 'png'

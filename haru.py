@@ -1,9 +1,8 @@
 import discord
 import utilities as util
-import config
 
 # secret token >:(
-TOKEN = config.token
+TOKEN = util.getToken()
 
 client = discord.Client()
 
