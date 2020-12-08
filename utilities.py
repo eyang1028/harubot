@@ -20,5 +20,8 @@ def numPics():
 def getPic():
     return random.choice(os.listdir(p)) 
 
+def delPic(name):
+    os.remove(os.path.join(p, name))
+
 def getRandom():
     return random.random()
