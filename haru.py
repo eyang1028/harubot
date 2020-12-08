@@ -42,10 +42,16 @@ async def on_message(msg):
 
     if content.startswith('!haru kiss'):
         rand = util.getRandom()
-        if rand < 0.5:
+        if rand < 0.25:
             reply = '{.author.mention} smooch ' + u'\U0001F618'
-        else:
+        elif rand < 0.50:
             reply = '{.author.mention} ewww no ' + u'\U0001F92E'
+        elif rand < 0.75:
+            await channel.send(file = discord.File('./ryo.png'))
+            reply = '{.author.mention} ryo: \"haha, you really think you can kiss my haru?\"'
+        else:
+            await channel.send(file = discord.File('./daisuke.png'))
+            reply = '{.author.mention} daisuke: \"get away from my haru.\"'
         await channel.send(reply.format(msg))
 
 @client.event
