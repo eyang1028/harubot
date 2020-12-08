@@ -40,6 +40,14 @@ async def on_message(msg):
             await channel.send(file = discord.File(p + img))
             await msg.add_reaction(u'\U0001F44D')
 
+    if content.startswith('!haru kiss'):
+        rand = util.getRandom()
+        if rand < 0.5:
+            reply = '{.author.mention} smooch ' + u'\U0001F618'
+        else:
+            reply = '{.author.mention} ewww no ' + u'\U0001F92E'
+        await channel.send(reply.format(msg))
+
 @client.event
 async def on_ready():
     print('Running:')

@@ -17,3 +17,6 @@ def numPics():
 
 def getPic():
     return random.choice(os.listdir(p)) 
+
+def getRandom():
+    return random.random()
