@@ -26,7 +26,7 @@ async def on_message(msg):
                     await i.save(p + i.filename)
                     await msg.add_reaction(u'\U0001F44D')
         else:
-            reply = '{.author.mention} attach a pic to add your message'
+            reply = '{.author.mention} attach a pic to add to your message'
             await channel.send(reply.format(msg))
 
 
@@ -43,8 +43,11 @@ async def on_message(msg):
         if len(msg.attachments) > 0:
             for i in msg.attachments:
                 if util.isImage(i):
-                    util.delPic(i.filename)
-                    await msg.add_reaction(u'\U0001F44D')
+                    if not util.delPic(i.filename):
+                        reply = '{.author.mention} pic does not exist'
+                        await channel.send(reply.format(msg))
+                    else:
+                        await msg.add_reaction(u'\U0001F44D')
         else:
             reply = '{.author.mention} attach a pic to delete to your message'
             await channel.send(reply.format(msg))

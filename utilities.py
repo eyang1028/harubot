@@ -21,7 +21,11 @@ def getPic():
     return random.choice(os.listdir(p)) 
 
 def delPic(name):
-    os.remove(os.path.join(p, name))
+    if os.path.exists(p + name):
+        os.remove(os.path.join(p, name))
+        return True
+    else:
+        return False
 
 def getRandom():
     return random.random()
