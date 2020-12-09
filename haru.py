@@ -52,6 +52,14 @@ async def on_message(msg):
             reply = '{.author.mention} attach a pic to delete to your message'
             await channel.send(reply.format(msg))
 
+    if content.startswith('!haru say'):
+        if content.rstrip() == '!haru say':
+            reply = 'usage: !haru say insert-something-here'
+        else:
+            await channel.delete_messages([msg])
+            reply = content[10:]
+        await channel.send(reply.format(msg))
+
     if content.startswith('!haru kiss'):
         self = False
         if len(msg.mentions) > 0:
