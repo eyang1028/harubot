@@ -13,7 +13,7 @@ async def on_message(msg):
         return
 
     channel = msg.channel
-    content = '%s' % msg.content
+    content = msg.content
 
     if content.lower().startswith('!haru hi'):
         reply = 'hi {.author.mention}, you simp'
@@ -28,7 +28,6 @@ async def on_message(msg):
         else:
             reply = '{.author.mention} attach a pic to add to your message'
             await channel.send(reply.format(msg))
-
 
     if content.lower().startswith('!haru post'):
         if util.numPics() < 1:
