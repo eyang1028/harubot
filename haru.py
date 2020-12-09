@@ -53,23 +53,29 @@ async def on_message(msg):
             await channel.send(reply.format(msg))
 
     if content.startswith('!haru kiss'):
+        self = False
         if len(msg.mentions) > 0:
             user_id = msg.mentions[0].id
-            to_mention = '<@' + str(user_id) + '>'
+            if user_id == client.user.id:
+                self = True
+                reply = 'i can\'t kiss myself...'
+            else:
+                to_mention = '<@' + str(user_id) + '>'
         else:
             to_mention = '{.author.mention}'
 
-        rand = util.getRandom()
-        if rand < 0.25:
-            reply = to_mention + ' smooch ' + u'\U0001F618'
-        elif rand < 0.50:
-            reply = to_mention + ' ewww no ' + u'\U0001F92E'
-        elif rand < 0.75:
-            await channel.send(file = discord.File('./ryo.png'))
-            reply = to_mention + ' ryo: \"haha, you really think you can kiss my haru?\"'
-        else:
-            await channel.send(file = discord.File('./daisuke.png'))
-            reply = to_mention + ' daisuke: \"get away from my haru.\"'
+        if not self:
+            rand = util.getRandom()
+            if rand < 0.25:
+                reply = to_mention + ' smooch ' + u'\U0001F618'
+            elif rand < 0.50:
+                reply = to_mention + ' ewww no ' + u'\U0001F92E'
+            elif rand < 0.75:
+                await channel.send(file = discord.File('./ryo.png'))
+                reply = to_mention + ' ryo: \"haha, you really think you can kiss my haru?\"'
+            else:
+                await channel.send(file = discord.File('./daisuke.png'))
+                reply = to_mention + ' daisuke: \"get away from my haru.\"'
         await channel.send(reply.format(msg))
 
 @client.event
