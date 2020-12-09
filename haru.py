@@ -12,14 +12,14 @@ async def on_message(msg):
         return
 
     channel = msg.channel
-    content = msg.content.lower()
+    content = '%s' % msg.content
     p = './pics/'
 
-    if content.startswith('!haru hi'):
+    if content.lower().startswith('!haru hi'):
         reply = 'hi {.author.mention}, you simp'
         await channel.send(reply.format(msg))
 
-    if content.startswith('!haru add'):
+    if content.lower().startswith('!haru add'):
         if len(msg.attachments) > 0:
             for i in msg.attachments:
                 if util.isImage(i):
@@ -30,7 +30,7 @@ async def on_message(msg):
             await channel.send(reply.format(msg))
 
 
-    if content.startswith('!haru post'):
+    if content.lower().startswith('!haru post'):
         if util.numPics() < 1:
             reply = '{.author.mention} you have not added any pics'
             await channel.send(reply.format(msg))
@@ -39,7 +39,7 @@ async def on_message(msg):
             await channel.send(file = discord.File(p + img))
             await msg.add_reaction(u'\U0001F44D')
 
-    if content.startswith('!haru del'):
+    if content.lower().startswith('!haru del'):
         if len(msg.attachments) > 0:
             for i in msg.attachments:
                 if util.isImage(i):
@@ -52,15 +52,15 @@ async def on_message(msg):
             reply = '{.author.mention} attach a pic to delete to your message'
             await channel.send(reply.format(msg))
 
-    if content.startswith('!haru say'):
-        if content.rstrip() == '!haru say':
+    if content.lower().startswith('!haru say'):
+        if content.rstrip().lower() == '!haru say':
             reply = 'usage: !haru say insert-something-here'
         else:
             await channel.delete_messages([msg])
             reply = content[10:]
         await channel.send(reply.format(msg))
 
-    if content.startswith('!haru kiss'):
+    if content.lower().startswith('!haru kiss'):
         self = False
         if len(msg.mentions) > 0:
             user_id = msg.mentions[0].id
