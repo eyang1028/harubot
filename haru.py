@@ -56,7 +56,7 @@ async def on_message(msg):
         if content.rstrip().lower() == '!haru say':
             reply = '{.author.mention} usage: !haru say insert-something-here'
         else:
-            await msg.delete(delay = 0.1)
+            await msg.delete(delay = 0.2)
             reply = content[10:]
         await channel.send(reply.format(msg))
 
