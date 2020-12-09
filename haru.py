@@ -3,8 +3,9 @@ import utilities as util
 
 # secret token >:(
 TOKEN = util.getToken()
-
 client = discord.Client()
+p = './pics/'
+r = './responses/'
 
 @client.event
 async def on_message(msg):
@@ -13,8 +14,6 @@ async def on_message(msg):
 
     channel = msg.channel
     content = '%s' % msg.content
-    p = './pics/'
-    r = './responses/'
 
     if content.lower().startswith('!haru hi'):
         reply = 'hi {.author.mention}, you simp'
