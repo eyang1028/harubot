@@ -14,6 +14,7 @@ async def on_message(msg):
     channel = msg.channel
     content = '%s' % msg.content
     p = './pics/'
+    r = './responses/'
 
     if content.lower().startswith('!haru hi'):
         reply = 'hi {.author.mention}, you simp'
@@ -79,10 +80,10 @@ async def on_message(msg):
             elif rand < 0.50:
                 reply = to_mention + ' ewww no ' + u'\U0001F92E'
             elif rand < 0.75:
-                await channel.send(file = discord.File('./ryo.png'))
+                await channel.send(file = discord.File(r + 'ryo.png'))
                 reply = to_mention + ' ryo: \"haha, you really think you can kiss my haru?\"'
             else:
-                await channel.send(file = discord.File('./daisuke.png'))
+                await channel.send(file = discord.File(r + 'daisuke.png'))
                 reply = to_mention + ' daisuke: \"get away from my haru.\"'
         await channel.send(reply.format(msg))
 
