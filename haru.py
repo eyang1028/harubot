@@ -6,6 +6,8 @@ TOKEN = util.getToken()
 client = discord.Client()
 p = './pics/'
 r = './responses/'
+with open('help.txt', 'r') as help_file:
+    help_text = help_file.read()
 
 @client.event
 async def on_message(msg):
@@ -14,6 +16,10 @@ async def on_message(msg):
 
     channel = msg.channel
     content = msg.content
+
+    if content.lower().startswith('!haru help'):
+        reply = help_text
+        await channel.send(reply.format(msg))
 
     if content.lower().startswith('!haru hi'):
         reply = 'hi {.author.mention}, you simp'

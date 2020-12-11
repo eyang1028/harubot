@@ -1,0 +1,15 @@
+haru command prefixes:
+
+`!haru help`: show this help message.
+
+`!haru hi`: try it.
+
+`!haru add`: add a pic that haru can post. must attach a pic to add.
+
+`!haru post`: post a stored pic. there are default pics stored already.
+
+`!haru del`: delete a stored pic. must attach a pic to delete.
+
+`!haru say`: tell haru to say something.
+
+`!haru kiss`: ask haru to kiss you or to kiss someone else by @ing them.
